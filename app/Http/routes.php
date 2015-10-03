@@ -14,3 +14,25 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/books', function () {
+    return 'List dem books!';
+});
+
+Route::get('/books/show/{title}', function ($title) {
+    return "Here's a thing!" . $title;
+});
+
+Route::get('/books/create', function () {
+    $view = '<form method="POST" action="/books/create">';
+    $view .= csrf_field();
+    $view .= '<input type="text" name="title">';
+    $view .= '<input type="submit">';
+    $view .= '</form>';
+
+    return $view;
+});
+
+Route::post('/books/create', function () {
+    return 'Process to create a new book' . $_POST['title'];
+});
