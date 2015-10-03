@@ -11,28 +11,55 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+//
+// Route::get('/books', function () {
+//     return 'List dem books!';
+// });
+//
+// Route::get('/books/show/{title}', function ($title) {
+//     return "Here's a thing!" . $title;
+// });
+//
+// Route::get('/books/create', function () {
+//     $view = '<form method="POST" action="/books/create">';
+//     $view .= csrf_field();
+//     $view .= '<input type="text" name="title">';
+//     $view .= '<input type="submit">';
+//     $view .= '</form>';
+//
+//     return $view;
+// });
+//
+// Route::post('/books/create', function () {
+//     return 'Process to create a new book' . $_POST['title'];
+// });
+
+// get, post, put, delete
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/books', function () {
-    return 'List dem books!';
+// Route::get('/books', 'BookController@getIndex');
+// Route::get('/books/show/{title}', 'BookController@getShow');
+// Route::get('/books/create', 'BookController@getCreate');
+// Route::post('/books/create', 'BookController@postCreate');
+#Route::get('/books/foo', 'BookController@bar');
+Route::controller('/books','BookController');
+Route::get('/practice', function() {
+    echo config('app.debug');
 });
 
-Route::get('/books/show/{title}', function ($title) {
-    return "Here's a thing!" . $title;
-});
+// Tag RESTful
+// Explicit
+// Route::get('/tag', 'TagController@index');
+// Route::get('/tag/create', 'TagController@create');
+// Route::post('/tag', 'TagController@store');
+// Route::get('/tag/{tag_id}', 'TagController@show');
+// Route::get('/tag/{tag_id}/edit', 'TagController@edit');
+// Route::put('/tag/{tag_id}', 'TagController@update');
+// Route::delete('/tag/{tag_id}', 'TagController@destroy');
 
-Route::get('/books/create', function () {
-    $view = '<form method="POST" action="/books/create">';
-    $view .= csrf_field();
-    $view .= '<input type="text" name="title">';
-    $view .= '<input type="submit">';
-    $view .= '</form>';
-
-    return $view;
-});
-
-Route::post('/books/create', function () {
-    return 'Process to create a new book' . $_POST['title'];
-});
+// Implicit
+Route::resource('tag', 'TagController');
