@@ -24,8 +24,9 @@ class BookController extends Controller {
     /**
      * Responds to requests to GET /books/show/{id}
      */
-    public function getShow($title) {
-        return 'Show book: '.$title;
+    public function getShow($title = null) {
+        // return 'Show book: '.$title;
+        return view('books.show')->with('title', $title); // What does the 'title' do?  TODO
     }
 
     /**

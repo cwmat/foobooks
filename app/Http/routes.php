@@ -1,5 +1,7 @@
 <?php
 
+// use Rych\Random\Random;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -63,3 +65,31 @@ Route::get('/practice', function() {
 
 // Implicit
 Route::resource('tag', 'TagController');
+
+
+
+
+
+
+
+// testing
+Route::get('/practice', function() {
+  Debugbar::info(Array('foo' => 'bar'));
+  Debugbar::error('Error!');
+  Debugbar::warning('Watch out…');
+  Debugbar::addMessage('Another message', 'mylabel');
+
+
+  $random = new Random();
+
+  // Generate a 16-byte string of random raw data
+  $randomBytes = $random->getRandomString(16);
+  return $randomBytes;
+
+
+
+  return 'Practice';
+});
+
+// Logs
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
